@@ -3149,19 +3149,19 @@ tp_init_palmdetect_edge(struct tp_dispatch *tp,
 
 	/* Enable edge palm detection on touchpads >= 70 mm. Anything
 	   smaller probably won't need it, until we find out it does */
-	if (width < 70.0)
-		return;
+	// if (width < 70.0)
+	// 	return;
 
 	/* palm edges are 8% of the width on each side */
 	mm.x = min(8, width * 0.08);
 	edges = evdev_device_mm_to_units(device, &mm);
 	tp->palm.left_edge = edges.x;
 
-	mm.x = width - min(8, width * 0.08);
+	mm.x = width - min(8, width * 0.15);
 	edges = evdev_device_mm_to_units(device, &mm);
 	tp->palm.right_edge = edges.x;
 
-	if (!tp->buttons.has_topbuttons && height > 55) {
+	if (!tp->buttons.has_topbuttons) {
 		/* top edge is 5% of the height */
 		mm.y = height * 0.05;
 		edges = evdev_device_mm_to_units(device, &mm);
