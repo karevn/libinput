@@ -3153,17 +3153,17 @@ tp_init_palmdetect_edge(struct tp_dispatch *tp,
 	// 	return;
 
 	/* palm edges are 8% of the width on each side */
-	mm.x = min(8, width * 0.08);
+	mm.x = min(8, width * 0.15);
 	edges = evdev_device_mm_to_units(device, &mm);
 	tp->palm.left_edge = edges.x;
 
-	mm.x = width - min(8, width * 0.15);
+	mm.x = width - min(8, width * 0.18);
 	edges = evdev_device_mm_to_units(device, &mm);
 	tp->palm.right_edge = edges.x;
 
 	if (!tp->buttons.has_topbuttons) {
 		/* top edge is 5% of the height */
-		mm.y = height * 0.05;
+		mm.y = height * 0.12;
 		edges = evdev_device_mm_to_units(device, &mm);
 		tp->palm.upper_edge = edges.y;
 	}
